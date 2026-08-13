@@ -1,6 +1,6 @@
 ## CodexPort v1.2.0
 
-CodexPort now supports incremental chat merging across computers that both already contain chats.
+CodexPort is an open-source Windows utility for incrementally merging chat libraries across computers that both already contain chats.
 
 - keeps the destination library intact and adds missing chats
 - skips identical chats
