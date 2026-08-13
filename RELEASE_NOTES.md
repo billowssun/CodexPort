@@ -1,6 +1,6 @@
 ## CodexPort v1.2.0
 
-CodexPort is an open-source Windows utility for incrementally merging chat libraries across computers that both already contain chats.
+CodexPort is an open-source Windows utility for migrating and incrementally merging chat libraries across multiple devices.
 
 - keeps the destination library intact and adds missing chats
 - skips identical chats

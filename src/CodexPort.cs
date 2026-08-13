@@ -15,7 +15,7 @@ using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
 [assembly: AssemblyTitle("CodexPort")]
-[assembly: AssemblyDescription("Merge local Codex chats across Windows computers without copying configuration or credentials.")]
+[assembly: AssemblyDescription("Migrate and merge local Codex chats across multiple Windows devices without copying configuration or credentials.")]
 [assembly: AssemblyCompany("Local utility")]
 [assembly: AssemblyProduct("CodexPort")]
 [assembly: AssemblyVersion("1.2.0.0")]
@@ -65,7 +65,7 @@ namespace CodexPort
 
             var subtitle = new Label
             {
-                Text = "增量合并多台电脑的 Codex 聊天；保留本机记录，不迁移登录、配置、插件、技能或密钥。",
+                Text = "迁移并合并多台 Windows 设备的 Codex 聊天；保留本机记录，不迁移登录、配置或密钥。",
                 AutoSize = true,
                 ForeColor = Color.FromArgb(75, 75, 75),
                 Location = new Point(31, 70)
@@ -451,7 +451,7 @@ namespace CodexPort
                     string sourceState = Path.Combine(temp, "state_5.sqlite");
                     string targetState = Path.Combine(codexHome, "state_5.sqlite");
                     if (!File.Exists(sourceState) || !File.Exists(targetState))
-                        throw new InvalidDataException("两台电脑都需要由当前 Codex 初始化聊天索引后才能安全合并。");
+                        throw new InvalidDataException("来源与目标设备都需要由当前 Codex 初始化聊天索引后才能安全合并。");
 
                     var sourceDatabaseIds = new HashSet<string>(NativeSqlite.GetThreadIds(sourceState), StringComparer.OrdinalIgnoreCase);
                     foreach (var thread in plan.Threads.Where(t => t.ShouldAdd))
@@ -720,7 +720,7 @@ namespace CodexPort
                     bool copy = !File.Exists(destination);
                     string hash = ComputeSha256(source);
                     if (!copy && !SlowEquals(hash, ComputeSha256(destination)))
-                        throw new IOException("两台电脑存在同路径但内容不同的聊天资源，为避免断链已停止合并：" + destinationRelative);
+                        throw new IOException("来源与目标设备存在同路径但内容不同的聊天资源，为避免断链已停止合并：" + destinationRelative);
                     result.Add(new ResourceImportPlan
                     {
                         SourcePath = source,
@@ -1099,7 +1099,7 @@ namespace CodexPort
             string root = Path.Combine(codexHome, "chat-migrator-backups");
             string backup = Path.Combine(root, DateTime.Now.ToString("yyyyMMdd-HHmmss-fff") + "-" + Guid.NewGuid().ToString("N").Substring(0, 8));
             Directory.CreateDirectory(backup);
-            report("正在自动备份目标电脑现有聊天状态……");
+            report("正在自动备份目标设备现有聊天状态……");
 
             foreach (string directory in HistoryDirectories)
             {
@@ -1575,10 +1575,10 @@ namespace CodexPort
             var common = target.Where(c => sourceNames.Contains(c.Name)).ToList();
             foreach (var column in target)
                 if (!sourceNames.Contains(column.Name) && column.NotNull && string.IsNullOrEmpty(column.DefaultValue) && !column.PrimaryKey)
-                    throw new InvalidDataException("两台电脑的 Codex 数据库版本不兼容，目标字段无法安全补全：" + table + "." + column.Name);
+                    throw new InvalidDataException("来源与目标设备的 Codex 数据库版本不兼容，目标字段无法安全补全：" + table + "." + column.Name);
             if (mandatory && (!common.Any(c => string.Equals(c.Name, "id", StringComparison.OrdinalIgnoreCase)) || !common.Any(c => string.Equals(c.Name, "rollout_path", StringComparison.OrdinalIgnoreCase))))
-                throw new InvalidDataException("两台电脑的 Codex 聊天索引结构不兼容。");
-            if (common.Count == 0) throw new InvalidDataException("两台电脑的 Codex 数据表没有可合并字段：" + table);
+                throw new InvalidDataException("来源与目标设备的 Codex 聊天索引结构不兼容。");
+            if (common.Count == 0) throw new InvalidDataException("来源与目标设备的 Codex 数据表没有可合并字段：" + table);
             return common;
         }
 
