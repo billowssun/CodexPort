@@ -1,6 +1,6 @@
 # CodexPort
 
-Merge local Codex chats across Windows computers without copying configuration, accounts, or credentials.
+Migrate and merge local Codex chats across multiple Windows devices without copying configuration, accounts, or credentials.
 
 CodexPort is a small open-source GUI with two actions:
 

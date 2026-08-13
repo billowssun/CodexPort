@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f2f3ee" />
-    <meta name="description" content="开源 Windows 工具。导出一台电脑的 Codex 聊天，在另一台电脑增量导入；保留本机已有聊天，不迁移账号、配置或密钥。" />
-    <meta property="og:title" content="家里一份，公司一份。合到一起。" />
-    <meta property="og:description" content="保留本机已有聊天，只补进缺少的记录。导入前自动备份，完成后自动启动 Codex。" />
+    <meta name="description" content="开源 Windows 多设备 Codex 聊天迁移与合并工具。增量导入聊天、附件和状态，保留本机记录，不迁移账号、配置或密钥。" />
+    <meta property="og:title" content="在多台设备之间迁移、合并 Codex 聊天" />
+    <meta property="og:description" content="保留目标设备已有聊天，只补进缺少的记录。重复内容自动跳过，冲突版本保留双方。" />
     <meta property="og:image" content="https://codexport.pddshop.cc/api/poster" />
     <meta property="og:type" content="website" />
-    <title>CodexPort | 合并多台电脑的 Codex 聊天</title>
+    <title>CodexPort | 多设备 Codex 聊天迁移与合并</title>
     <link rel="preload" href="/api/poster" as="image" fetchpriority="high" />
     <link rel="stylesheet" href="/styles.css" />
   </head>
@@ -18,7 +18,8 @@
     <header class="site-header">
       <a class="wordmark" href="/" aria-label="CodexPort 首页"><span class="brand-mark" aria-hidden="true">CP</span><span>CodexPort</span></a>
       <nav aria-label="主导航">
-        <a href="#how">怎么合并</a>
+        <a href="#uses">适用情况</a>
+        <a href="#how">怎么迁移</a>
         <a href="#scope">安全边界</a>
         <a href="https://github.com/billowssun/CodexPort" target="_blank" rel="noreferrer">GitHub</a>
       </nav>
@@ -27,46 +28,56 @@
     <main id="main">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy reveal">
-          <p class="eyebrow">开源 · Windows · 本地合并</p>
-          <h1 id="hero-title">家里一份，<br />公司一份。<br />合到一起。</h1>
-          <p class="hero-lede">导入时保留本机已有聊天，只补进缺少的记录。配置、账号和密钥都不动。</p>
+          <p class="eyebrow">开源 · Windows · 多设备迁移</p>
+          <h1 id="hero-title">迁移、合并<br />多台设备的<br />Codex 聊天。</h1>
+          <p class="hero-lede">把一台设备上的聊天包导入另一台设备。保留本机记录，补齐缺失聊天，并迁移附件、标题和状态。</p>
           <div class="hero-actions">
             <a class="button button-primary" href="https://github.com/billowssun/CodexPort/releases/download/v1.2.0/CodexPort.exe">下载 v1.2.0 <span aria-hidden="true">↓</span></a>
             <a class="button button-secondary" href="https://github.com/billowssun/CodexPort" target="_blank" rel="noreferrer">查看源代码 <span aria-hidden="true">↗</span></a>
           </div>
         </div>
         <figure class="poster-wrap reveal reveal-delay">
-          <img src="/api/poster" alt="两台电脑的 Codex 聊天增量汇入同一合集" width="1086" height="1448" />
-          <figcaption>聊天合并，配置不动。</figcaption>
+          <img src="/api/poster" alt="多台 Windows 设备的 Codex 聊天迁移到同一合集" width="1086" height="1448" />
+          <figcaption>迁移聊天，不迁移使用环境。</figcaption>
         </figure>
+      </section>
+
+      <section class="use-cases" id="uses" aria-label="适用情况">
+        <p>适用于</p>
+        <ul>
+          <li>更换设备</li>
+          <li>系统重装</li>
+          <li>多地点使用</li>
+          <li>聊天归档与恢复</li>
+        </ul>
       </section>
 
       <section class="process" id="how" aria-labelledby="process-title">
         <div class="section-intro">
-          <p class="eyebrow">每次合并仍然只有两步</p>
-          <h2 id="process-title">一台导出，另一台导入。</h2>
+          <p class="eyebrow">迁移只需要两步</p>
+          <h2 id="process-title">来源设备导出，目标设备导入。</h2>
         </div>
         <ol class="steps">
-          <li><span class="step-index">01</span><div><p class="step-context">来源电脑</p><h3>点击“导出聊天包”</h3><p>Codex 会自动关闭，经过校验的聊天包会保存到桌面。</p></div></li>
-          <li><span class="step-index">02</span><div><p class="step-context">目标电脑</p><h3>点击“导入聊天包”</h3><p>选择聊天包后增量合并，完成后自动启动 Codex。想让两台电脑都有合集，再反向操作一次。</p></div></li>
+          <li><span class="step-index">01</span><div><p class="step-context">来源设备</p><h3>点击“导出聊天包”</h3><p>Codex 自动关闭，完成逐项校验后把聊天包保存到桌面。</p></div></li>
+          <li><span class="step-index">02</span><div><p class="step-context">目标设备</p><h3>点击“导入聊天包”</h3><p>选择聊天包后增量导入，完成后自动启动 Codex。需要迁移到更多设备时，继续导入同一个聊天包。</p></div></li>
         </ol>
       </section>
 
       <section class="scope" id="scope" aria-labelledby="scope-title">
         <div class="scope-heading">
-          <h2 id="scope-title">合并聊天，<br />不碰配置。</h2>
-          <p>完全相同的聊天会跳过；同一聊天出现不同版本时保留两份，不静默覆盖。聊天包可通过 U 盘、局域网或自己的网盘传输。</p>
+          <h2 id="scope-title">迁移聊天，<br />不迁移环境。</h2>
+          <p>完全相同的聊天自动跳过；同一聊天存在不同版本时保留双方。聊天包可通过 U 盘、局域网或自己的网盘传输。</p>
         </div>
         <div class="scope-lists">
-          <div><p class="scope-label scope-yes">会合并</p><ul><li>活跃和已归档聊天</li><li>标题、置顶、归档状态与索引</li><li>附件、生成图片与目标状态</li></ul></div>
+          <div><p class="scope-label scope-yes">会迁移与合并</p><ul><li>活跃和已归档聊天</li><li>标题、置顶、归档状态与索引</li><li>附件、生成图片与目标状态</li></ul></div>
           <div><p class="scope-label">不会带走</p><ul><li>账号、登录状态和 API 密钥</li><li>配置、插件、技能与规则</li><li>自动化与记忆</li></ul></div>
         </div>
       </section>
 
-      <div class="safety-strip" role="note"><span>导入前自动备份</span><span>包内文件逐项校验</span><span>失败自动恢复</span></div>
+      <div class="safety-strip" role="note"><span>导入前自动备份</span><span>包内文件逐项校验</span><span>失败自动恢复</span><span>不是云端实时同步</span></div>
 
       <section class="final-cta" aria-labelledby="cta-title">
-        <h2 id="cta-title">把两边的上下文，合到一起。</h2>
+        <h2 id="cta-title">让每台设备，都能接上已有上下文。</h2>
         <a class="button button-primary" href="https://github.com/billowssun/CodexPort/releases/download/v1.2.0/CodexPort.exe">下载 CodexPort.exe <span aria-hidden="true">↓</span></a>
       </section>
     </main>
