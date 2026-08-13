@@ -243,6 +243,39 @@ a:focus-visible {
   padding: clamp(86px, 11vw, 150px) 0;
 }
 
+.use-cases {
+  display: grid;
+  grid-template-columns: 0.36fr 1.64fr;
+  gap: 32px;
+  align-items: center;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.use-cases > p {
+  margin: 0;
+  color: var(--accent);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.use-cases ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.use-cases li {
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+}
+
 .section-intro {
   display: grid;
   grid-template-columns: 0.7fr 1.4fr;
@@ -381,7 +414,7 @@ footer {
 
 .safety-strip {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   margin: 0 0 32px;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -489,6 +522,16 @@ footer p {
   .section-intro,
   .scope {
     grid-template-columns: 1fr;
+  }
+
+  .use-cases {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .use-cases ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 20px;
   }
 
   .section-intro {
