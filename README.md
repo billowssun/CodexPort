@@ -1,75 +1,66 @@
 # CodexPort
 
-Move local Codex chats between Windows computers without copying configuration or credentials.
+Merge local Codex chats across Windows computers without copying configuration, accounts, or credentials.
 
-CodexPort is a small Windows GUI utility with two actions:
+CodexPort is a small open-source GUI with two actions:
 
-- **Export chats** — automatically closes Codex, creates a verified `.codexchat` package on the desktop, and selects it in File Explorer.
-- **Import chats** — automatically closes Codex, verifies and imports the selected package, then starts Codex again.
+- **Export chats**: closes Codex, creates a verified `.codexchat` package on the desktop, and selects it in File Explorer.
+- **Import chats**: closes Codex, verifies the package, merges missing chats into the local library, then starts Codex again.
 
 ## Download
 
-Download the latest compiled Windows executable from [GitHub Releases](https://github.com/billowssun/CodexPort/releases/latest).
+[Download CodexPort.exe v1.2.0](https://github.com/billowssun/CodexPort/releases/download/v1.2.0/CodexPort.exe)
 
-## Website
+Product page: [codexport.pddshop.cc](https://codexport.pddshop.cc)
 
-The product page is available at [codexport.pddshop.cc](https://codexport.pddshop.cc).
+## Merge behavior
 
-The static Vite source lives in `website`. To run it locally:
+- keeps every chat already on the destination computer
+- adds chats missing from the destination
+- skips identical chats
+- when the same chat ID has different content, keeps both versions and labels the imported version as a copy
+- preserves destination title, pin, and archive state for an identical chat
+- rewrites local attachment and generated-image paths for the destination Windows user
+- repeated imports are idempotent and do not create new copies again
 
-```powershell
-cd .\website
-npm install
-npm run dev
-```
+To give both computers the complete combined library, export and import once in each direction.
 
-## What it moves
+## Included
 
-- active and archived local chats
-- titles, pin/archive state, and thread indexes
-- chat attachments
-- generated images and visualizations
-- chat goal state
+- active and archived chats
+- titles, pin/archive state, and local thread indexes
+- chat attachments, generated images, and visualizations
+- dynamic tool, parent/child task, and chat goal state
 
-## What it excludes
+## Excluded
 
-- account tokens and authentication files
+- account and login state
+- API keys and authentication files
 - `config.toml`
-- secrets
-- plugins and skills
-- rules, automations, and memories
+- plugins, skills, rules, automations, and memories
 
 ## Safety
 
 - closes the official Codex Desktop process before database access
-- exports allowlisted chat files only
+- allowlists package paths and rejects traversal, duplicates, oversized files, and abnormal compression ratios
 - records and verifies SHA-256 for every package entry
-- removes remote-control enrollment and external-agent configuration records from the database snapshot
-- backs up the destination before importing
-- rolls back automatically if an import fails
-- refuses to overwrite a destination that already contains chats
-- blocks path traversal and unexpected package content
+- never imports remote-control enrollment or external-agent configuration
+- merges only chat-related SQLite rows instead of replacing the destination database
+- creates a unique backup before writing
+- validates SQLite integrity and foreign keys after merging
+- restores the backup automatically if importing fails
 
 Chat contents can contain private information or secrets previously pasted by the user. Protect `.codexchat` packages like backups.
 
-## Build
+## Build and test
 
-Requirements:
-
-- Windows 10 or 11
-- Windows PowerShell 5.1
-- .NET Framework 4.8
-
-Run:
+Requirements: Windows 10 or 11, Windows PowerShell 5.1, .NET Framework 4.8, and Python 3 for tests.
 
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\build.ps1
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tests\run.ps1
 ```
 
-The executable is written to `dist\CodexPort.exe`.
+The single-file executable is written to `dist\CodexPort.exe`. The build compiles to a temporary artifact before atomically replacing the previous executable.
 
-## Current limitation
-
-CodexPort does not merge two different existing chat libraries. Import into a newly initialized Codex installation that does not yet contain chats.
-
-This is an independent community utility and is not affiliated with or endorsed by OpenAI.
+This independent community utility is not affiliated with or endorsed by OpenAI.
