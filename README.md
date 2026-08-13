@@ -9,7 +9,7 @@ CodexPort is a small Windows GUI utility with two actions:
 
 ## Download
 
-Download the latest compiled Windows executable from [GitHub Releases](../../releases/latest).
+Download the latest compiled Windows executable from [GitHub Releases](https://github.com/billowssun/CodexPort/releases/latest).
 
 ## What it moves
 
