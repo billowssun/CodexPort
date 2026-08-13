@@ -11,6 +11,18 @@ CodexPort is a small Windows GUI utility with two actions:
 
 Download the latest compiled Windows executable from [GitHub Releases](https://github.com/billowssun/CodexPort/releases/latest).
 
+## Website
+
+The product page is available at [codexport.pddshop.cc](https://codexport.pddshop.cc).
+
+The static Vite source lives in `website`. To run it locally:
+
+```powershell
+cd .\website
+npm install
+npm run dev
+```
+
 ## What it moves
 
 - active and archived local chats

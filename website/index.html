@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f2f3ee" />
+    <meta
+      name="description"
+      content="CodexPort 是一个开源 Windows 工具，两次点击即可迁移 Codex 本地聊天记录，不迁移配置、账号或密钥。"
+    />
+    <meta property="og:title" content="CodexPort | 两次点击迁移 Codex 聊天" />
+    <meta
+      property="og:description"
+      content="导出聊天，导入聊天。配置、账号和密钥留在原处。"
+    />
+    <meta property="og:image" content="/codexport-poster.jpg" />
+    <meta property="og:type" content="website" />
+    <title>CodexPort | 迁移 Codex 聊天</title>
+    <link rel="preload" href="/codexport-poster.jpg" as="image" fetchpriority="high" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到正文</a>
+
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="CodexPort 首页">
+        <span class="brand-mark" aria-hidden="true">CP</span>
+        <span>CodexPort</span>
+      </a>
+      <nav aria-label="主导航">
+        <a href="#how">怎么用</a>
+        <a href="#scope">迁移范围</a>
+        <a href="https://github.com/billowssun/CodexPort" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">开源 · Windows · 本地迁移</p>
+          <h1 id="hero-title">把 Codex 聊天，<br />带到新电脑。</h1>
+          <p class="hero-lede">
+            两次点击，迁移完整本地聊天。配置、账号和密钥留在原处。
+          </p>
+          <div class="hero-actions">
+            <a
+              class="button button-primary"
+              href="https://github.com/billowssun/CodexPort/releases/download/v1.1.0/CodexPort.exe"
+            >
+              下载 Windows 版
+              <span aria-hidden="true">↓</span>
+            </a>
+            <a
+              class="button button-secondary"
+              href="https://github.com/billowssun/CodexPort"
+              target="_blank"
+              rel="noreferrer"
+            >
+              查看源代码
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <p class="release-note">v1.1.0 · 单文件 EXE · 无需安装</p>
+        </div>
+
+        <figure class="poster-wrap reveal reveal-delay">
+          <img
+            src="/codexport-poster.jpg"
+            alt="CodexPort 宣传图，展示导出聊天和导入聊天两个步骤"
+            width="1086"
+            height="1448"
+          />
+          <figcaption>聊天在走，配置不动。</figcaption>
+        </figure>
+      </section>
+
+      <section class="process" id="how" aria-labelledby="process-title">
+        <div class="section-intro">
+          <p class="eyebrow">唯一需要记住的流程</p>
+          <h2 id="process-title">旧电脑一次，新电脑一次。</h2>
+        </div>
+        <ol class="steps">
+          <li>
+            <span class="step-index">01</span>
+            <div>
+              <p class="step-context">旧电脑</p>
+              <h3>点击“导出聊天”</h3>
+              <p>软件发现 Codex 正在运行时会自动关闭，并生成一个迁移包。</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-index">02</span>
+            <div>
+              <p class="step-context">新电脑</p>
+              <h3>点击“导入聊天”</h3>
+              <p>选择迁移包后自动还原记录，完成后自动启动 Codex。</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="scope" id="scope" aria-labelledby="scope-title">
+        <div class="scope-heading">
+          <p class="eyebrow">边界清楚，迁移才安心</p>
+          <h2 id="scope-title">只带走聊天。</h2>
+          <p>迁移包是本地文件。你可以用 U 盘、局域网或自己的网盘传到新电脑。</p>
+        </div>
+        <div class="scope-lists">
+          <div>
+            <p class="scope-label scope-yes">会迁移</p>
+            <ul>
+              <li>Codex 聊天记录</li>
+              <li>聊天所需的本地索引</li>
+              <li>迁移包完整性校验信息</li>
+            </ul>
+          </div>
+          <div>
+            <p class="scope-label">不会迁移</p>
+            <ul>
+              <li>账号和登录状态</li>
+              <li>API 密钥和认证信息</li>
+              <li>Codex 配置与偏好</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta" aria-labelledby="cta-title">
+        <p class="eyebrow">新电脑不必从空白开始</p>
+        <h2 id="cta-title">把过去的上下文，一起带走。</h2>
+        <a
+          class="button button-primary"
+          href="https://github.com/billowssun/CodexPort/releases/download/v1.1.0/CodexPort.exe"
+        >
+          下载 CodexPort.exe
+          <span aria-hidden="true">↓</span>
+        </a>
+      </section>
+    </main>
+
+    <footer>
+      <p>CodexPort · 开源项目</p>
+      <p class="repo-address">github.com/billowssun/CodexPort</p>
+    </footer>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
