@@ -1,4 +1,4 @@
-const POSTER_URL = 'https://raw.githubusercontent.com/billowssun/CodexPort/main/website/public/codexport-v1.2-poster.png';
+const POSTER_URL = 'https://raw.githubusercontent.com/billowssun/CodexPort/main/website/public/codexport-v1.2-poster.png?revision=github-icon';
 
 module.exports = async function poster(request, response) {
   const source = await fetch(POSTER_URL);
