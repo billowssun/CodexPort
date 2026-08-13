@@ -15,7 +15,7 @@ Product page: [codexport.pddshop.cc](https://codexport.pddshop.cc)
 
 ## Merge behavior
 
-- keeps every chat already on the destination computer
+- keeps every chat already on the destination device
 - adds chats missing from the destination
 - skips identical chats
 - when the same chat ID has different content, keeps both versions and labels the imported version as a copy
@@ -23,7 +23,7 @@ Product page: [codexport.pddshop.cc](https://codexport.pddshop.cc)
 - rewrites local attachment and generated-image paths for the destination Windows user
 - repeated imports are idempotent and do not create new copies again
 
-To give both computers the complete combined library, export and import once in each direction.
+To give multiple devices the complete combined library, import the latest chat package on each target device.
 
 ## Included
 
